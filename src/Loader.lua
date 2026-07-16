@@ -6,7 +6,7 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 
-local BASE_URL = "https://raw.githubusercontent.com/EndOverdosing/Soluna-API/main/"
+local BASE_URL = "https://raw.githubusercontent.com/Soluna-Development/API/main/src/scripts/"
 
 local DefaultSettings = {
 	AutoLoadEnabled = false,
@@ -18,27 +18,15 @@ local DefaultSettings = {
 	ScriptToggles = {
 		Rivals_Classic = false,
 		Rivals_Modern = false,
+		Rivals_Rewrite = false,
 		Rivals_SkinChanger = false,
 		Arsenal = false,
-		Universal = false,
-		BigPaintball2 = false,
-		AimbotFFA = false,
 		Bladeball = false,
-		GunGroundsFFA = false,
-		CombatWarriors = false,
 		MurderMystery2 = false,
-		FleeTheFacility = false,
-		GrowAGarden = false,
-		Brookhaven = false,
-		MurderersVsSheriffsDuels = false,
         NightsInTheForest = false,
-        Fling2Climb = false,
-        PlantsVsBrainrots = false,
         TheWildWest = false,
-        StrongmanSimulator = false,
         Doors = false,
-        Versus = false,
-        BeNpcOrDie = false,
+		FlingThingsAndPeople = false,
 	}
 }
 
@@ -86,71 +74,38 @@ end
 if Settings.AutoLoadEnabled then
 	local function autoLoadSelectedScripts()
 		if Settings.ScriptToggles.Rivals_Classic then
-			loadstring(game:HttpGet(BASE_URL .. "rivals-classic.lua"))()
+			loadstring(game:HttpGet(BASE_URL .. "Rivals/Classic.lua"))()
 		end
 		if Settings.ScriptToggles.Rivals_Modern then
-			loadstring(game:HttpGet(BASE_URL .. "rivals-modern.lua"))()
+			loadstring(game:HttpGet(BASE_URL .. "Rivals/Modern.lua"))()
+		end
+		if Settings.ScriptToggles.Rivals_Rewrite then
+			loadstring(game:HttpGet(BASE_URL .. "Rivals/Rewrite.lua"))()
 		end
 		if Settings.ScriptToggles.Rivals_SkinChanger then
-			loadstring(game:HttpGet(BASE_URL .. "skin-changer.lua", true))()
+			loadstring(game:HttpGet(BASE_URL .. "Rivals/Skin-Changer.lua"))()
 		end
 		if Settings.ScriptToggles.Arsenal then
-			loadstring(game:HttpGet(BASE_URL .. "arsenal.lua", true))()
-		end
-		if Settings.ScriptToggles.Universal then
-			loadstring(game:HttpGet(BASE_URL .. "universal.lua", true))()
-		end
-		if Settings.ScriptToggles.BigPaintball2 then
-			loadstring(game:HttpGet(BASE_URL .. "big-paintball-2.lua", true))()
-		end
-		if Settings.ScriptToggles.AimbotFFA then
-			loadstring(game:HttpGet(BASE_URL .. "Aimbot-FFA.lua", true))()
+			loadstring(game:HttpGet(BASE_URL .. "Arsenal.lua"))()
 		end
 		if Settings.ScriptToggles.Bladeball then
-			loadstring(game:HttpGet(BASE_URL .. "bladeball.lua", true))()
-		end
-		if Settings.ScriptToggles.GunGroundsFFA then
-			loadstring(game:HttpGet(BASE_URL .. "gun-grounds-ffa.lua", true))()
-		end
-		if Settings.ScriptToggles.CombatWarriors then
-			loadstring(game:HttpGet(BASE_URL .. "combat-warriors.lua", true))()
+			loadstring(game:HttpGet(BASE_URL .. "Bladeball.lua"))()
 		end
 		if Settings.ScriptToggles.MurderMystery2 then
-			loadstring(game:HttpGet(BASE_URL .. "murder-mystery-2.lua", true))()
-		end
-		if Settings.ScriptToggles.FleeTheFacility then
-			loadstring(game:HttpGet(BASE_URL .. "flee-the-facility.lua", true))()
-		end
-		if Settings.ScriptToggles.GrowAGarden then
-			loadstring(game:HttpGet(BASE_URL .. "grow-a-garden.lua", true))()
-		end
-		if Settings.ScriptToggles.Brookhaven then
-			loadstring(game:HttpGet(BASE_URL .. "brookhaven.lua", true))()
+			loadstring(game:HttpGet(BASE_URL .. "Murder-Mystery-2.lua"))()
 		end
         if Settings.ScriptToggles.NightsInTheForest then
-            loadstring(game:HttpGet(BASE_URL .. "99-Nights-in-the-Forest.lua", true))()
-        end
-        if Settings.ScriptToggles.Fling2Climb then
-            loadstring(game:HttpGet(BASE_URL .. "fling-2-climb.lua", true))()
-        end
-        if Settings.ScriptToggles.PlantsVsBrainrots then
-            loadstring(game:HttpGet(BASE_URL .. "plants-vs-brainrots.lua", true))()
+            loadstring(game:HttpGet(BASE_URL .. "99-Nights-in-the-Forest.lua"))()
         end
         if Settings.ScriptToggles.TheWildWest then
-            loadstring(game:HttpGet(BASE_URL .. "The-Wild-West.lua", true))()
-        end
-        if Settings.ScriptToggles.StrongmanSimulator then
-            loadstring(game:HttpGet(BASE_URL .. "strongman-simulator.lua", true))()
+            loadstring(game:HttpGet(BASE_URL .. "The-Wild-West.lua"))()
         end
         if Settings.ScriptToggles.Doors then
-            loadstring(game:HttpGet(BASE_URL .. "doors.lua", true))()
+            loadstring(game:HttpGet(BASE_URL .. "Doors.lua"))()
         end
-        if Settings.ScriptToggles.Versus then
-            loadstring(game:HttpGet(BASE_URL .. "versus.lua", true))()
-        end
-        if Settings.ScriptToggles.BeNpcOrDie then
-            loadstring(game:HttpGet(BASE_URL .. "be-npc-or-die.lua", true))()
-        end
+		if Settings.ScriptToggles.FlingThingsAndPeople then
+			loadstring(game:HttpGet(BASE_URL .. "Fling-Things-and-People.lua"))()
+		end
 	end
 	autoLoadSelectedScripts()
 	local anyScriptEnabled = false
@@ -197,7 +152,7 @@ if Settings.TeleportLoadEnabled then
             task.wait(1)
 
             pcall(function()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/EndOverdosing/Soluna-API/main/main.lua", true))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Soluna-Development/API/main/src/Loader.lua"))()
             end)
         end)
     ]])
@@ -220,7 +175,7 @@ local Window = Library:CreateWindow({
 
 Window:Dialog({
 	Title = "Script Updated",
-	Content = "Added Be NPC or Die! Removed Fisch, Forsaken, Blue Lock Rivals, and Murderers vs Sheriffs Duels.",
+	Content = "Added Aimbot FFA and Fling Things and People! Updated all script URLs to new API repository.",
 	Buttons = {
 		{
 			Title = "Okay",
@@ -239,10 +194,6 @@ local Tabs = {
 	Rivals = Window:CreateTab({
 		Title = "Rivals",
 		Icon = "swords"
-	}),
-	Universal = Window:CreateTab({
-		Title = "Universal",
-		Icon = "globe"
 	}),
 	FPS = Window:CreateTab({
 		Title = "FPS Games",
@@ -270,7 +221,6 @@ local selectedTabName = Settings.SelectedTab or "Rivals"
 local selectedTabIndex = 1
 local tabOrder = {
 	"Rivals",
-	"Universal",
 	"FPS",
 	"Fighting",
 	"Misc",
@@ -288,7 +238,7 @@ Window:SelectTab(selectedTabIndex)
 
 Tabs.Rivals:CreateParagraph("Rivals Scripts", {
 	Title = "Rivals",
-	Content = "Select from different Rivals scripts including the new Skin Changer."
+	Content = "Select from different Rivals scripts including Classic, Modern, Rewrite, and Skin Changer."
 })
 
 local rivalsClassicToggle = Tabs.Rivals:CreateToggle("RivalsClassicToggle", {
@@ -309,6 +259,15 @@ local rivalsModernToggle = Tabs.Rivals:CreateToggle("RivalsModernToggle", {
 	end
 })
 
+local rivalsRewriteToggle = Tabs.Rivals:CreateToggle("RivalsRewriteToggle", {
+	Title = "Rivals Rewrite",
+	Default = Settings.ScriptToggles.Rivals_Rewrite,
+	Callback = function(Value)
+		Settings.ScriptToggles.Rivals_Rewrite = Value
+		saveSettings()
+	end
+})
+
 local rivalsSkinChangerToggle = Tabs.Rivals:CreateToggle("RivalsSkinChangerToggle", {
 	Title = "Rivals Skin Changer",
 	Default = Settings.ScriptToggles.Rivals_SkinChanger,
@@ -325,17 +284,22 @@ Tabs.Rivals:CreateButton({
 		local scriptsLoaded = false
 		if Settings.ScriptToggles.Rivals_Classic then
 			Library:Notify({ Title = "Rivals", Content = "Loading Rivals Classic...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "rivals-classic.lua"))()
+			loadstring(game:HttpGet(BASE_URL .. "Rivals/Classic.lua"))()
 			scriptsLoaded = true
 		end
 		if Settings.ScriptToggles.Rivals_Modern then
 			Library:Notify({ Title = "Rivals", Content = "Loading Rivals Modern...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "rivals-modern.lua"))()
+			loadstring(game:HttpGet(BASE_URL .. "Rivals/Modern.lua"))()
+			scriptsLoaded = true
+		end
+		if Settings.ScriptToggles.Rivals_Rewrite then
+			Library:Notify({ Title = "Rivals", Content = "Loading Rivals Rewrite...", Duration = 3 })
+			loadstring(game:HttpGet(BASE_URL .. "Rivals/Rewrite.lua"))()
 			scriptsLoaded = true
 		end
 		if Settings.ScriptToggles.Rivals_SkinChanger then
 			Library:Notify({ Title = "Rivals", Content = "Loading Skin Changer...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "skin-changer.lua", true))()
+			loadstring(game:HttpGet(BASE_URL .. "Rivals/Skin-Changer.lua"))()
 			scriptsLoaded = true
 		end
 		if not scriptsLoaded then
@@ -344,31 +308,9 @@ Tabs.Rivals:CreateButton({
 	end
 })
 
-local universalToggle = Tabs.Universal:CreateToggle("UniversalToggle", {
-	Title = "Universal Script",
-	Default = Settings.ScriptToggles.Universal,
-	Callback = function(Value)
-		Settings.ScriptToggles.Universal = Value
-		saveSettings()
-	end
-})
-
-Tabs.Universal:CreateButton({
-	Title = "Load Universal Script",
-	Description = "Load Universal script that works across many games",
-	Callback = function()
-		if Settings.ScriptToggles.Universal then
-			Library:Notify({ Title = "Universal", Content = "Loading Universal script...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "universal.lua", true))()
-		else
-			Library:Notify({ Title = "Universal", Content = "Universal script is not toggled on", Duration = 3 })
-		end
-	end
-})
-
 Tabs.FPS:CreateParagraph("FPS Game Scripts", {
 	Title = "FPS Games",
-	Content = "Select from various FPS game scripts below."
+	Content = "Select from various FPS game scripts below including Arsenal and Aimbot FFA."
 })
 
 local arsenalToggle = Tabs.FPS:CreateToggle("ArsenalToggle", {
@@ -380,42 +322,6 @@ local arsenalToggle = Tabs.FPS:CreateToggle("ArsenalToggle", {
 	end
 })
 
-local bigPaintball2Toggle = Tabs.FPS:CreateToggle("BigPaintball2Toggle", {
-	Title = "Big Paintball 2",
-	Default = Settings.ScriptToggles.BigPaintball2,
-	Callback = function(Value)
-		Settings.ScriptToggles.BigPaintball2 = Value
-		saveSettings()
-	end
-})
-
-local aimbotFFAToggle = Tabs.FPS:CreateToggle("AimbotFFAToggle", {
-	Title = "[🐰] Aimbot FFA 🎯",
-	Default = Settings.ScriptToggles.AimbotFFA,
-	Callback = function(Value)
-		Settings.ScriptToggles.AimbotFFA = Value
-		saveSettings()
-	end
-})
-
-local gunGroundsFFAToggle = Tabs.FPS:CreateToggle("GunGroundsFFAToggle", {
-	Title = "Gun Grounds FFA",
-	Default = Settings.ScriptToggles.GunGroundsFFA,
-	Callback = function(Value)
-		Settings.ScriptToggles.GunGroundsFFA = Value
-		saveSettings()
-	end
-})
-
-local versusToggle = Tabs.FPS:CreateToggle("VersusToggle", {
-	Title = "Versus ( Demo )",
-	Default = Settings.ScriptToggles.Versus,
-	Callback = function(Value)
-		Settings.ScriptToggles.Versus = Value
-		saveSettings()
-	end
-})
-
 Tabs.FPS:CreateButton({
 	Title = "Load Selected FPS Scripts",
 	Description = "Load all toggled FPS game scripts",
@@ -423,27 +329,7 @@ Tabs.FPS:CreateButton({
 		local scriptsLoaded = false
 		if Settings.ScriptToggles.Arsenal then
 			Library:Notify({ Title = "Arsenal", Content = "Loading Arsenal script...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "arsenal.lua", true))()
-			scriptsLoaded = true
-		end
-		if Settings.ScriptToggles.BigPaintball2 then
-			Library:Notify({ Title = "Big Paintball 2", Content = "Loading script...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "big-paintball-2.lua", true))()
-			scriptsLoaded = true
-		end
-		if Settings.ScriptToggles.AimbotFFA then
-			Library:Notify({ Title = "Aimbot FFA", Content = "Loading script...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "Aimbot-FFA.lua", true))()
-			scriptsLoaded = true
-		end
-		if Settings.ScriptToggles.GunGroundsFFA then
-			Library:Notify({ Title = "Gun Grounds FFA", Content = "Loading script...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "gun-grounds-ffa.lua", true))()
-			scriptsLoaded = true
-		end
-		if Settings.ScriptToggles.Versus then
-			Library:Notify({ Title = "Versus ( Demo )", Content = "Loading script...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "versus.lua", true))()
+			loadstring(game:HttpGet(BASE_URL .. "Arsenal.lua"))()
 			scriptsLoaded = true
 		end
 		if not scriptsLoaded then
@@ -454,7 +340,7 @@ Tabs.FPS:CreateButton({
 
 Tabs.Fighting:CreateParagraph("Fighting Game Scripts", {
 	Title = "Fighting Games",
-	Content = "Select from various fighting game scripts below."
+	Content = "Select from various fighting game scripts below including Bladeball and Fling Things and People."
 })
 
 local bladeballToggle = Tabs.Fighting:CreateToggle("BladeballToggle", {
@@ -466,11 +352,11 @@ local bladeballToggle = Tabs.Fighting:CreateToggle("BladeballToggle", {
 	end
 })
 
-local combatWarriorsToggle = Tabs.Fighting:CreateToggle("CombatWarriorsToggle", {
-	Title = "Combat Warriors",
-	Default = Settings.ScriptToggles.CombatWarriors,
+local flingThingsToggle = Tabs.Fighting:CreateToggle("FlingThingsToggle", {
+	Title = "Fling Things and People",
+	Default = Settings.ScriptToggles.FlingThingsAndPeople,
 	Callback = function(Value)
-		Settings.ScriptToggles.CombatWarriors = Value
+		Settings.ScriptToggles.FlingThingsAndPeople = Value
 		saveSettings()
 	end
 })
@@ -482,12 +368,12 @@ Tabs.Fighting:CreateButton({
 		local scriptsLoaded = false
 		if Settings.ScriptToggles.Bladeball then
 			Library:Notify({ Title = "Bladeball", Content = "Loading script...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "bladeball.lua", true))()
+			loadstring(game:HttpGet(BASE_URL .. "Bladeball.lua"))()
 			scriptsLoaded = true
 		end
-		if Settings.ScriptToggles.CombatWarriors then
-			Library:Notify({ Title = "Combat Warriors", Content = "Loading script...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "combat-warriors.lua", true))()
+		if Settings.ScriptToggles.FlingThingsAndPeople then
+			Library:Notify({ Title = "Fling Things", Content = "Loading script...", Duration = 3 })
+			loadstring(game:HttpGet(BASE_URL .. "Fling-Things-and-People.lua"))()
 			scriptsLoaded = true
 		end
 		if not scriptsLoaded then
@@ -510,56 +396,11 @@ local murderMystery2Toggle = Tabs.Misc:CreateToggle("MurderMystery2Toggle", {
 	end
 })
 
-local fleeTheFacilityToggle = Tabs.Misc:CreateToggle("FleeTheFacilityToggle", {
-	Title = "Flee the Facility",
-	Default = Settings.ScriptToggles.FleeTheFacility,
-	Callback = function(Value)
-		Settings.ScriptToggles.FleeTheFacility = Value
-		saveSettings()
-	end
-})
-
-local growAGardenToggle = Tabs.Misc:CreateToggle("GrowAGardenToggle", {
-	Title = "Grow a Garden",
-	Default = Settings.ScriptToggles.GrowAGarden,
-	Callback = function(Value)
-		Settings.ScriptToggles.GrowAGarden = Value
-		saveSettings()
-	end
-})
-
-local brookhavenToggle = Tabs.Misc:CreateToggle("BrookhavenToggle", {
-	Title = "Brookhaven",
-	Default = Settings.ScriptToggles.Brookhaven,
-	Callback = function(Value)
-		Settings.ScriptToggles.Brookhaven = Value
-		saveSettings()
-	end
-})
-
 local nightsInTheForestToggle = Tabs.Misc:CreateToggle("NightsInTheForestToggle", {
-	Title = "99 Nights in the Forest 🔦",
+	Title = "99 Nights in the Forest",
 	Default = Settings.ScriptToggles.NightsInTheForest,
 	Callback = function(Value)
 		Settings.ScriptToggles.NightsInTheForest = Value
-		saveSettings()
-	end
-})
-
-local fling2ClimbToggle = Tabs.Misc:CreateToggle("Fling2ClimbToggle", {
-	Title = "Fling 2 Climb",
-	Default = Settings.ScriptToggles.Fling2Climb,
-	Callback = function(Value)
-		Settings.ScriptToggles.Fling2Climb = Value
-		saveSettings()
-	end
-})
-
-local plantsVsBrainrotsToggle = Tabs.Misc:CreateToggle("PlantsVsBrainrotsToggle", {
-	Title = "Plants Vs Brainrots",
-	Default = Settings.ScriptToggles.PlantsVsBrainrots,
-	Callback = function(Value)
-		Settings.ScriptToggles.PlantsVsBrainrots = Value
 		saveSettings()
 	end
 })
@@ -573,29 +414,11 @@ local theWildWestToggle = Tabs.Misc:CreateToggle("TheWildWestToggle", {
 	end
 })
 
-local strongmanSimulatorToggle = Tabs.Misc:CreateToggle("StrongmanSimulatorToggle", {
-	Title = "Strongman Simulator",
-	Default = Settings.ScriptToggles.StrongmanSimulator,
-	Callback = function(Value)
-		Settings.ScriptToggles.StrongmanSimulator = Value
-		saveSettings()
-	end
-})
-
 local doorsToggle = Tabs.Misc:CreateToggle("DoorsToggle", {
 	Title = "Doors",
 	Default = Settings.ScriptToggles.Doors,
 	Callback = function(Value)
 		Settings.ScriptToggles.Doors = Value
-		saveSettings()
-	end
-})
-
-local beNpcOrDieToggle = Tabs.Misc:CreateToggle("BeNpcOrDieToggle", {
-	Title = "Be NPC or Die",
-	Default = Settings.ScriptToggles.BeNpcOrDie,
-	Callback = function(Value)
-		Settings.ScriptToggles.BeNpcOrDie = Value
 		saveSettings()
 	end
 })
@@ -607,57 +430,22 @@ Tabs.Misc:CreateButton({
 		local scriptsLoaded = false
 		if Settings.ScriptToggles.MurderMystery2 then
 			Library:Notify({ Title = "Murder Mystery 2", Content = "Loading script...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "murder-mystery-2.lua", true))()
-			scriptsLoaded = true
-		end
-		if Settings.ScriptToggles.FleeTheFacility then
-			Library:Notify({ Title = "Flee the Facility", Content = "Loading script...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "flee-the-facility.lua", true))()
-			scriptsLoaded = true
-		end
-		if Settings.ScriptToggles.GrowAGarden then
-			Library:Notify({ Title = "Grow a Garden", Content = "Loading script...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "grow-a-garden.lua", true))()
-			scriptsLoaded = true
-		end
-		if Settings.ScriptToggles.Brookhaven then
-			Library:Notify({ Title = "Brookhaven", Content = "Loading Brookhaven script...", Duration = 3 })
-			loadstring(game:HttpGet(BASE_URL .. "brookhaven.lua", true))()
+			loadstring(game:HttpGet(BASE_URL .. "Murder-Mystery-2.lua"))()
 			scriptsLoaded = true
 		end
         if Settings.ScriptToggles.NightsInTheForest then
             Library:Notify({ Title = "99 Nights in the Forest", Content = "Loading script...", Duration = 3 })
-            loadstring(game:HttpGet(BASE_URL .. "99-Nights-in-the-Forest.lua", true))()
-            scriptsLoaded = true
-        end
-        if Settings.ScriptToggles.Fling2Climb then
-            Library:Notify({ Title = "Fling 2 Climb", Content = "Loading script...", Duration = 3 })
-            loadstring(game:HttpGet(BASE_URL .. "fling-2-climb.lua", true))()
-            scriptsLoaded = true
-        end
-        if Settings.ScriptToggles.PlantsVsBrainrots then
-            Library:Notify({ Title = "Plants Vs Brainrots", Content = "Loading script...", Duration = 3 })
-            loadstring(game:HttpGet(BASE_URL .. "plants-vs-brainrots.lua", true))()
+            loadstring(game:HttpGet(BASE_URL .. "99-Nights-in-the-Forest.lua"))()
             scriptsLoaded = true
         end
         if Settings.ScriptToggles.TheWildWest then
             Library:Notify({ Title = "The Wild West", Content = "Loading script...", Duration = 3 })
-            loadstring(game:HttpGet(BASE_URL .. "The-Wild-West.lua", true))()
-            scriptsLoaded = true
-        end
-        if Settings.ScriptToggles.StrongmanSimulator then
-            Library:Notify({ Title = "Strongman Simulator", Content = "Loading script...", Duration = 3 })
-            loadstring(game:HttpGet(BASE_URL .. "strongman-simulator.lua", true))()
+            loadstring(game:HttpGet(BASE_URL .. "The-Wild-West.lua"))()
             scriptsLoaded = true
         end
         if Settings.ScriptToggles.Doors then
             Library:Notify({ Title = "Doors", Content = "Loading script...", Duration = 3 })
-            loadstring(game:HttpGet(BASE_URL .. "doors.lua", true))()
-            scriptsLoaded = true
-        end
-        if Settings.ScriptToggles.BeNpcOrDie then
-            Library:Notify({ Title = "Be NPC or Die", Content = "Loading script...", Duration = 3 })
-            loadstring(game:HttpGet(BASE_URL .. "be-npc-or-die.lua", true))()
+            loadstring(game:HttpGet(BASE_URL .. "Doors.lua"))()
             scriptsLoaded = true
         end
 		if not scriptsLoaded then
@@ -748,7 +536,7 @@ Tabs.Settings:CreateButton({
 	Callback = function()
 		Library:Notify({ Title = "Script Loader", Content = "Reloading Script Loader...", Duration = 3 })
 		task.wait(1)
-		loadstring(game:HttpGet(BASE_URL .. "main.lua", true))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Soluna-Development/API/main/src/Loader.lua"))()
 	end
 })
 
